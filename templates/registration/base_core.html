@@ -1,0 +1,68 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+
+  <title>{% block title %}NBL FINANCIAL |{% endblock %}</title>
+
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/fontawesome.min.js" integrity="sha512-KCwrxBJebca0PPOaHELfqGtqkUlFUCuqCnmtydvBSTnJrBirJ55hRG5xcP4R9Rdx9Fz9IF3Yw6Rx40uhuAHR8Q==" crossorigin="anonymous"></script>
+  <!-- https://cdnjs.com/libraries/font-awesome -->
+  <!-- overlayScrollbars -->
+  <link rel="stylesheet" href="{% static 'dashboard/overlayScrollbars/css/OverlayScrollbars.min.css' %}">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="{% static 'dashboard/dist/css/adminlte.min.css' %}">
+  <!-- Google Font: Source Sans Pro -->
+  <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+  <style>
+    body{
+      background-image: url("{% static 'ii/images/bkgx.jpeg' %}") !important;
+      background-size: cover;
+      background-repeat: no-repeat;
+    }    
+  </style>
+  {% block unique_css %}
+  {% endblock %}
+  
+</head>
+<body class="hold-transition">
+  {% block contentx %} 
+
+  {% endblock %}
+<!-- ./wrapper -->
+
+<!-- REQUIRED SCRIPTS -->
+<!-- jQuery -->
+<script src="{% static 'dashboard/plugs/jquery.min.js' %}"></script>
+<!-- Bootstrap -->
+<script src="{% static 'dashboard/plugs/bootstrap.bundle.min.js' %}"></script>
+<!-- overlayScrollbars -->
+<script src="{% static 'dashboard/overlayScrollbars/js/jquery.overlayScrollbars.min.js' %}"></script>
+<!-- AdminLTE App -->
+<script src="{% static 'dashboard/dist/js/adminlte.js' %}"></script>
+
+<!-- OPTIONAL SCRIPTS -->
+<script src="{% static 'dashboard/dist/js/demo.js' %}"></script>
+
+<!-- PAGE PLUGINS -->
+<!-- jQuery Mapael -->
+<!-- these are not necessary -->
+<!-- 
+<script src="plugins/jquery-mousewheel/jquery.mousewheel.js"></script>
+<script src="plugins/raphael/raphael.min.js"></script>
+<script src="plugins/jquery-mapael/jquery.mapael.min.js"></script>
+<script src="plugins/jquery-mapael/maps/usa_states.min.js"></script>
+-->
+<!-- ChartJS -->
+<!-- not necessary -->
+<!-- <script src="plugins/chart.js/Chart.min.js"></script> -->
+
+<!-- PAGE SCRIPTS -->
+<script src="{% static 'dashboard/dist/js/pages/dashboard2.js' %}"></script>
+{% block  domready %}{% endblock %}
+</body>
+</html>

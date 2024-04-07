@@ -1,0 +1,6 @@
+{% extends 'admin/change_list.html' %}
+{% load core_app_templatetags %}
+
+{% block content_title %}
+ {{block.super}}<br><p>{% get_model_doc cl.model %}</p>
+{% endblock %}

@@ -1,0 +1,90 @@
+{% extends 'basex7.html' %}
+{% load static %}
+{% block extraheader %}
+<style>
+    .banner-slider{
+        background-image: url("{% static 'ii/images/a1.jpg' %}");
+    }
+</style>
+{% endblock %}
+
+{% block keyslider %} 
+
+{% endblock %} 
+
+{% block content %}  
+
+<div class="mail" id="contact">
+	<div class="container">
+		<h3 class="w3l-title"><span>Contact</span> Us</h3>
+		<div class="mail-w3l-agile">
+			<div class="col-md-6 col-sm-6 contact-left-w3ls">
+				<div class="w3l-cont-mk">
+					<img src="{% static 'ii/images/img2.jpg' %}">
+				</div>
+				<h3>Contact Info</h3>
+				<div class="visit">
+					<div class="col-md-2 col-sm-2 col-xs-2 contact-icon-wthree">
+						<i class="fa fa-home" aria-hidden="true"></i>
+					</div>
+					<div class="col-md-10 col-sm-10 col-xs-10 contact-text-agileinf0">
+						<h4>Write Us</h4>
+						<p>
+							P.O. Box 348 Newcastle, NE6 UD England
+						</p>
+					</div>
+					<div class="clearfix"></div>
+				</div>
+				<div class="mail-w3">
+					<div class="col-md-2 col-sm-2 col-xs-2 contact-icon-wthree">
+						<i class="fa fa-envelope-o" aria-hidden="true"></i>
+					</div>
+					<div class="col-md-10 col-sm-10 col-xs-10 contact-text-agileinf0">
+						<h4>Mail us</h4>
+						<p><a href="mailto:info@nblfinancial.com">info@nblfinancial</a></p>
+					</div>
+					<div class="clearfix"></div>
+				</div>
+				<div class="call">
+					<div class="col-md-2 col-sm-2 col-xs-2 contact-icon-wthree">
+						<i class="fa fa-phone" aria-hidden="true"></i>
+					</div>
+					<div class="col-md-10 col-sm-10 col-xs-10 contact-text-agileinf0">
+						<h4>Call us</h4>
+						<p><a href="tel://+447-4512-83775">+447-4512-83775</a></p>
+					</div>
+					<div class="clearfix"></div>
+				</div>
+			</div>
+			<div class="col-md-6 col-sm-6 agileinfo_mail_grid_right">
+				<h3>Get In Touch</h3>
+				<form action="." method="post">
+                    {% csrf_token %}
+					<div class="wthree_contact_left_grid">
+						<input type="text" name="name" placeholder="Name" required="">
+						<input type="email" name="email" placeholder="Email" required="">
+						<input type="text" name="phone_number" placeholder="Phone Number" required="">
+					</div>
+					<textarea name="Message" placeholder="Message......." required=""></textarea>
+					<input type="submit" value="Submit">
+				</form>
+			</div>
+			<div class="clearfix"> </div>
+		</div>
+	</div>
+</div>
+
+<script>
+    window.onload = () => {
+        var x2 = document.getElementsByClassName('active')
+        console.log(x2)
+        for(let i=0; i<(x2.length); i++) {
+            x2[i].classList.remove('active')
+        };
+        var x = document.getElementById('contact')
+        x.classList.add('active')
+    }
+    
+</script>
+
+{% endblock %}

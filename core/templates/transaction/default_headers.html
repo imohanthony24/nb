@@ -1,0 +1,205 @@
+{% extends 'generic_header.html' %}
+{% load static %}
+
+{% block title %}{{super}}Dashboard{% endblock %}
+{% block content %}
+
+<nav class="navbar navbar-default navbar-fixed-top" style="background-color:#214FC6 !important;">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button id="drp-btn" type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span> 
+      </button>
+      <a class="navbar-brand" href="{% url 'core:homepage' %}" style="color:#FFFF38; font-family: 'PT Mono', monospace;"><span>Home</span>&emsp;&emsp;NBL Internet Banking</a><!-- omnia_circa:index hidden-xs-->
+      <a class="navbar-brand" style="color: #FFF;"></a>
+    </div>
+    <ul id="large-screen-nav" class="nav navbar-nav navbar-right hidden-xs">
+    <li class="hidden-xs hidden-sm"><a style="border-bottom: none;">24/7 support:&nbsp;<span class="glyphicon glyphicon-phone"></span> +447-4512-83775</a></li>
+    <li class="hidden-xs">{% if request.user.is_authenticated %}<a style="border-bottom: none;" href="{% url 'users:logout' %}">Sign out</a>{% else %}<a href="{% url 'users:login' %}">Sign in</a>{% endif %}</li>
+    </ul>
+    <div class="collapse navbar-collapse" id="myNavbar">
+    
+      <ul class="nav navbar-nav navbar-right hidden-sm hidden-md hidden-lg" id="dropdown-nav">
+        <!-- small screen menu -->
+
+
+        
+        
+        <li class="dropdown nav-li"><a class="dropdown-toggle main-header nav-color-effect" data-toggle="dropdown"><i class=""></i>My Account&nbsp;<b class="glyphicon glyphicon-menu-down pull-right"></b></a>
+          <ul class="dropdown-menu">
+           <li>
+            <a class="btn sub-header btn-fill btn-text-left block-button subnav-effects nav-color-effect" href="{% url 'core:transactions' %}">Transaction Details</a>
+           </li>
+           
+           <li><a class="btn sub-header btn-fill btn-text-left block-button subnav-effects nav-color-effect" href="#" >Balance Enquiry</a></li>
+           <li><a class="btn sub-header btn-fill btn-text-left block-button subnav-effects nav-color-effect" href="#" >Account Statement</a></li>
+           <li><a class="btn sub-header btn-fill btn-text-left block-button subnav-effects nav-color-effect" href="#" >My Account Manager</a></li>
+           <li><a class="btn sub-header btn-fill btn-text-left block-button subnav-effects nav-color-effect" href="#" >Secure E-mail</a></li>
+          </ul>
+        </li>
+        <!-- {} the permission check goes here -->
+        {% if perms.core.can_change_transfer_status %}
+        <li class="dropdown nav-li"><a class="dropdown-toggle main-header nav-color-effect" data-toggle="dropdown"><i class=""></i>Super Admin Actions&nbsp;<b class="glyphicon glyphicon-menu-down pull-right"></b></a>>
+         <ul class="dropdown-menu">
+          <li>
+          <a class="btn sub-header btn-fill btn-text-left block-button subnav-effects nav-color-effect" href="{% url 'core:all_transfers' %}">Fund Transfers</a>
+          </li>
+         </ul>
+        </li>
+        {% endif %}
+        <!-- {} permission check ends here-->
+        <!-- <li><a href="#">Page 1</a></li> -->
+        <li><a class="main-header" href="{% url 'core:initiate_transfer' %}">Account Transfers</a></li>
+        <li><a class="main-header" href="#"><li><a class="main-header" href="#">Payments &amp; Collections</a></li></a></li>
+        <li><a class="main-header" href="#">Cards</a></li>
+        <li><a class="main-header" href="#">Fx Transactions</a></li>
+        <li><a class="main-header" href="#">Airlines &amp; Travels</a></li>
+        <li><a class="main-header" href="#">Cheques</a></li>
+        <li><a class="main-header" href="#">Customer Feedback</a></li>
+
+        
+
+
+        <li class="dropdown nav-li"><a class="main-header nav-color-effect">24/7 support:&nbsp;<span class="glyphicon glyphicon-phone"></span> +447-4512-83775</a></li>
+        <li class="dropdown nav-li">{% if request.user.is_authenticated %}<a class="main-header nav-color-effect" style="border-bottom: none;" href="{% url 'users:logout' %}" >Sign out</a>{% endif %}</li> 
+          
+        <!--end of small screen menu -->
+        
+      </ul>
+    </div>
+    
+  </div>
+  </nav>
+
+   <div id="top-level-advert" class="container-fluid">
+   <div class="row">
+     <div class="col-sm-12 hidden-xs" style="border: 2px solid indigo; margin-bottom: 5px; display: none;">
+       <p>advert</p>
+     </div>
+    </div>
+  </div>
+
+  <div class="container-fluid">
+    <div class="row">
+      <div id="side-menu" class="col-md-2 col-sm-3 hidden-xs"> <!-- style="padding: 0; border: 1px solid gray;"-->
+       <div id="user-profile">
+        <!-- user profile pics appear here -->
+       </div>
+       <ul id="menu-options" class="nav nav-pills nav-stacked">
+       
+        <li>
+         <a href="#school-opts" data-toggle='collapse' aria-hidden='true'>My Account <span class="glyphicon glyphicon-menu-left pull-right"></span>
+         </a>
+         <ul id="school-opts" class="collapse list-unstyled">
+          <li><a href="{% url 'core:transactions' %}">Transaction Details</a>
+          </li>
+          <li><a href="#" >Balance Equiry</a></li>
+          <li><a href="#" >Account Statement</a></li>
+          <li><a href="#" >My Account Manager</a></li>
+          <li><a href="#" >Secure E-mail</a></li>
+         </ul>
+        </li>
+        <!-- {} permission starts -->
+        {% if perms.core.can_change_transfer_status %}
+        <li>
+         <a href="#admin-actions" data-toggle='collapse' aria-hidden='true'>Super Admin Actions <span class="glyphicon glyphicon-menu-left pull-right"></span></a>
+         <ul id="admin-actions" class="collapse list-unstyled">
+          <li><a href="{% url 'core:all_transfers' %}">Fund Transfers</a></li>
+         </ul>
+        </li>
+        {% endif %}
+        <!-- {} permission ends -->     
+        <li class="nav-divider"></li>
+        <li><a href="{% url 'core:initiate_transfer' %}">Account Transfer</a></li>
+        <li><a  href="#">Payments &amp; Collections</a></li>
+        <li><a  href="#">Cards</a></li>
+        <li><a  href="#">Fx Transactions</a></li>
+        <li><a  href="#">Airlines &amp; Travels</a></li>
+        <li><a  href="#">Cheques</a></li>
+        <li><a  href="#">Customer Feedback</a></li>
+        
+        <li class="nav-divider"></li>  
+        
+       </ul>
+       
+      </div><!--end of side-menu -->
+      <div class="col-sm-offset-3 col-md-offset-2 col-md-10 col-sm-9 col-xs-12"> <!--  style="border: 1px solid blue;" -->
+       <div class="row">
+        <div class="col-md-10 col-sm-12 col-xs-12"> <!-- main col "-->
+        <!--this is where the inherited div come in-->
+
+        <!-- {% if messages %}
+          <div class="row">
+           <div class="col-xs-12 col-sm-12 col-md-12">
+            {% for message in messages %}
+             <div class="alert alert-{{message.tags}}">
+              <button type="button" class="close" data-dismiss='alert' aria-label='close'><span aria-hidden='true'>&times;</span></button>
+              {{message}}
+             </div>
+            {% endfor %}
+            </div>
+          </div>
+        {% endif %} -->
+
+        {% block dashboard_contents %}
+
+        {% endblock %}
+        
+    
+      <div class="row" id="paymentSupported" style="margin-top: 10%; display: absolute; bottom: 0; width: 100%;">
+       <div class="col-md-12">
+        <p class="pull-left">
+         <ul class="gtco-social-icons cash-icons pull-left">
+           <li><a href="#" style="color: #77b5fe; font-size: xx-large; font-weight: bolder;"><i class="fa fa-cc-amex" aria-hidden="true"></i></a></li>
+           <li><a href="#" style="color: #77b5fe; font-size: xx-large; font-weight: bolder;"> <i class="fa fa-cc-mastercard" aria-hidden="true"></i></a></li>
+          <li><a href="#" style="color: #77b5fe; font-size: xx-large; font-weight: bolder; "><i class="fa fa-cc-paypal" aria-hidden="true"></i></a></li>
+          <li><a href="#" style="color: #77b5fe; font-size: xx-large; font-weight: bolder; "><i class="fa fa-cc-visa" aria-hidden="true"></i></a></li>
+          <li><a href="#" style="color: #77b5fe; font-size: xx-large; font-weight: bolder; "><i class="fa fa-cc-jcb" aria-hidden="true"></i></a></li>
+          <li><a href="#" style="color: #77b5fe; font-size: xx-large; font-weight: bolder; "><i class="fa fa-cc-discover" aria-hidden="true"></i></a></li>
+          </ul>
+                    
+        </p>
+        <p class="pull-right">
+         <small>
+         All major payment are supported!</small>
+        </p>
+       </div>
+      </div>
+      <div class="row copyright">
+        <div class="col-md-12">
+          <p class="pull-left">
+            <small class="block">&copy;2023 NEWBURYLAND FINANCIAL. All Rights Reserved.</small> 
+          </p>
+          <p class="pull-right">
+            <ul class="gtco-social-icons pull-right">
+              <li><a href="#"><i class="icon-twitter"></i></a></li>
+              <li><a href="#"><i class="icon-facebook"></i></a></li>
+              <li><a href="#"><i class="icon-linkedin"></i></a></li>
+              <li><a href="#"><i class="icon-dribbble"></i></a></li>
+            </ul>
+          </p>
+        </div>
+      </div>
+
+    
+  
+                
+        </div>
+
+        <div class="col-md-2 col-sm-12 hidden-xs"> <!-- advert col -->
+         <!-- <div id='calendar' style="width: 80%"></div> -->
+         
+        </div>
+
+       </div>
+       
+     </div>
+    </div>
+    <script>
+      document.getElementById('dxdx').innerHTM="love"//(new Date()).getFullYear()
+    </script>
+  </div>
+
+{% endblock %}

@@ -1,0 +1,57 @@
+{% extends 'transaction/default_headers.html' %}
+{% load static %}
+{% load humanize %}
+
+{% block dashboard_contents %}
+ <div class="row">
+  <div class="col-xs-12 col-sm-12 col-md-">
+    <section style="margin-top: 2rem;border-radius: 10px; padding: 10px 5px;">
+     <div class="panel panel-info">
+      <div class="panel-heading">
+        <h2 class="panel-title"><b>Fund Transfers</b></h2>
+      </div>
+      <div class="panel-body">
+       <table class="table table-sm table-bordered table-stripped table-hovered">
+        <thead>
+         <tr>
+          <th>Date</th>
+          <th>Account Owner</th>
+          <th>Beneficiary</th>
+          <th>Amount</th>
+          <th>Remarks</th>
+          <th>Transfer Status</th>
+          <th>Action</th>
+         </tr>
+        </thead>
+        <tbody>
+          {% for object in object_list %}
+           <tr>
+            <td>{{object.time_initiated|date}}</td>
+            <td>{{object.owner_account.account_owner}}</td>
+            <td>{{object.beneficiary}}</td>
+            <td>{{object.amount}}</td>
+            <td>{{object.remarks}}</td>
+            <td>{{object.get_transfer_status_display}}</td>
+            <td><a href="{% url 'core:update_transfer' object.slug %}">modify</a></td>
+           </tr>
+          {% endfor %}
+        </tbody>
+         
+       </table>  
+      </div>
+     </div>
+            
+    </section>
+     <div class="row">
+      <div class="col-md-12 col-xs-12 col-sm-12">
+       
+      </div>
+     </div>
+    </div>
+ </div>
+ {% endblock %}
+ {% block domready %}
+    $('#transForm > p').css({"text-align":"left"})
+ {% endblock %}
+
+ <!-- click to generate token; submit via ajax; securedly sent by mail -->

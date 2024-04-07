@@ -1,0 +1,132 @@
+{% extends 'transaction/default_headers.html' %}
+{% load static %}
+{% load humanize %}
+
+
+{% block dashboard_contents %}
+ <div class="row">
+  <div class="col-xs-12 col-sm-12 col-md-12">
+
+  <section style="margin-top: 2rem;border-radius: 10px; padding: 10px 5px;">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+       <h2 class="panel-title"><b>Account Status</b></h2>
+      </div>
+      <div class="panel-body">
+        <table class="table table-sm table-bordered">
+        <caption style="color: black; font-weight: bolder;">Welcome {{request.user.userprofile|upper}}</caption>
+
+         <thead class="bg-info">
+           <tr>
+            <th>Account Number</th>
+            <th>Account Type</th>
+            <th>Currency</th>
+            <th>Book Balance</th>
+            <th>Balance</th>
+            <th>Account Status</th>
+           </tr>
+         </thead>
+         <tbody>
+           <tr>
+            <td>{{useraccount.account_number}}</td>
+            <td>{{useraccount.get_account_type_display}}</td>
+            <td>GB Pounds</td>
+            <td>{{user_account_balance|intcomma}}&nbsp;<span style="color: red">*</span></td>
+            <td>{{user_book_balance|intcomma}}</td>
+            <td>Active</td>
+           </tr>
+         </tbody>
+          
+        </table>
+        <p class="pull-left"><small>{% if failed_transfers %}<span style="color: red;">*</span>&nbsp;Some recent transfers were cancelled. <a href="{% url 'core:failed_transfer' useraccount.pk %}">Check here</a> and contact your account officer{% endif %}</small></p>
+      </div>      
+     </section>
+
+     {% if transfer_under_billing or transfer_under_billing2%}
+
+      <section style="margin-top: 2rem;border-radius: 10px; padding: 10px 5px;">
+    <div class="panel panel-danger">
+      <div class="panel-heading">
+       <h2 class="panel-title"><b>Pending Transactions</b></h2>
+      </div>
+      <div class="panel-body">
+        <table class="table table-sm table-bordered">
+        <caption style="color: black; font-weight: bolder;">Please follow up on these transactions</caption>
+
+         <thead class="bg-warning">
+           <tr>
+            <th>Transaction</th>
+            <th>Issue</th>
+            <th>Amount &#40;<span style="color: red;">*</span>If any&#41;</th>
+            <th>Description</th>
+           </tr>
+         </thead>
+         <tbody>
+          {% for transaction in transfer_under_billing %}
+           <tr>
+            <td>Transfer to {{transaction.transfer.beneficiary}} &#40; {{transaction.transfer.amount|intcomma}} &#41;</td>
+            <td>{{transaction.billing_description}}</td>
+            <td>{{transaction.amount|intcomma}} &emsp; <a href="{% url 'core:transfer_charge' transaction.pk %}">enter code</a></td>
+            <td>{{transaction.description}}</td>
+           </tr>
+           {% endfor %}
+
+           {% for tr2 in transfer_under_billing2 %}
+             <tr>
+              <td>Transfer to {{tr2.transfer.beneficiary}} &#40; {{tr2.transfer.amount|intcomma}} &#41;</td>
+             <td>{{tr2.billing}} &#40;{{tr2.billing_abbreviation}}&#41;</td>
+             <td>{{tr2.amount|intcomma}} &emsp; <a href="{% url 'core:transfer_chargex' tr2.pk %}">enter code</a></td>
+            <td>{{tr2.description}}</td>
+            </tr>
+           {% endfor %}
+
+         </tbody>
+          
+        </table>
+        
+      </div>      
+     </section>
+
+     {% endif %}
+
+   <table class="table table-sm table-bordered" style="margin-top: 8px;">
+   <caption style="color: black; font-weight: bolder;">Transaction Details</caption>
+    <thead class="bg-info" style="font-size: 1.3rem;" data-asterics="{{mark_astericks}}">
+     <tr>
+      <th>Date</th>
+      <th>Description</th>
+      <th>Debit &#40;&#163;&#41;</th>
+      <th>Credit &#40;&#163;&#41;</th>
+      <th>Source</th>
+      <th>Reference</th>
+     </tr>
+    </thead>
+    <tbody>
+     {% for transact in deb_cre %}
+     <tr>
+      <td>{{transact.date_of_transaction}}</td>
+      <td>{{transact.description}}</td>
+       {% if transact.TRANSACTION_CODE == "1" %}
+      <td>&emsp;</td>
+      <td>{{transact.amount|intcomma}}</td>
+       {% else %}
+       <td>{{transact.amount|intcomma}}</td>
+       <td>&emsp;</td>
+       {% endif %}
+      <td data-transId="{{transact.pk}}">{{transact.get_transaction_type_display}}</td>
+       {% if transact.TRANSACTION_CODE == "1" %}
+         <td>{{transact.depositor}}</td>
+       {% else %}
+         <td>{{transact.payee}}</td>
+       {% endif %}
+     </tr>
+     {% endfor %}
+    </tbody>   	
+   </table>  	
+  </div>
+ </div>
+{% endblock %}
+
+{% block domready %}
+ 
+{% endblock %}

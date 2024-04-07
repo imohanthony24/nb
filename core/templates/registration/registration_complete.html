@@ -1,0 +1,38 @@
+{% extends 'base-templates/base.html' %}
+{% load i18n %}
+{% block xtra_header_files %}
+<style type="text/css">
+  .form-error{
+    color:red;
+  }
+</style>
+{% endblock %}
+
+{% block title %}{% trans "Activation email sent" %}{% endblock %}
+
+{% block content %}
+<div class="container">
+ <div class="row">
+  <div class="col-xs-12 col-sm-12 col-md-12">
+   <p id="reg-msg">{% trans "Please check your email to complete the registration process." %}</p>
+  </div>
+  </div>
+</div>
+
+{% endblock %}
+
+
+{% comment %}
+**registration/registration_complete.html**
+
+Used after successful completion of the registration form. This
+template has no context variables of its own, and should simply inform
+the user that an email containing account-activation information has
+been sent.
+{% endcomment %}
+
+{% block domready %}
+ if($('div.alert-warning')){
+  //$('#reg-msg').hide()
+ }
+{% endblock %}

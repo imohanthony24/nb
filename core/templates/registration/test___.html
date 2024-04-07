@@ -1,0 +1,64 @@
+{% extends '../base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+<form  method="post" > 
+{% csrf_token %}
+ <div id="div_id_username" class="control-group required">
+  <label for="id_username" class="control-label requiredField">
+   Username<span class="asteriskField">*</span>
+  </label>
+
+  <div class="controls">
+   <input type="text" name="username" id="id_username" maxlength="150" class="textinput textInput" autofocus required />
+   <p id="hint_id_username" class="help-block">Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only.</p>
+  </div>
+ </div> 
+
+ <div id="div_id_email" class="control-group required">
+  <label for="id_email" class="control-label requiredField">
+   E-mail<span class="asteriskField">*</span>
+  </label>
+  <div class="controls">
+   <input type="email" name="email" id="id_email" class="emailinput" required /> 
+  </div> 
+ </div> 
+ <div id="div_id_password1" class="control-group required">
+  <label for="id_password1" class="control-label requiredField">
+   Password<span class="asteriskField">*</span> 
+  </label> 
+ <div class="controls">
+  <input type="password" name="password1" id="id_password1" class="textinput textInput" required />
+  <p id="hint_id_password1" class="help-block">
+  <ul>
+   <li>Your password can&#39;t be too similar to your other personal information.</li>
+   <li>Your password must contain at least 8 characters.</li>
+   <li>Your password can&#39;t be a commonly used password.</li>
+   <li>Your password can&#39;t be entirely numeric.</li>
+  </ul>
+  </p> 
+ </div> 
+ </div>
+ <div id="div_id_password2" class="control-group required"> 
+  <label for="id_password2" class="control-label requiredField">
+   Password confirmation<span class="asteriskField">*</span>
+  </label> 
+  <div class="controls">
+   <input type="password" name="password2" id="id_password2" class="textinput textInput" required /> 
+   <p id="hint_id_password2" class="help-block">Enter the same password as before, for verification.</p>
+  </div>
+ </div>
+</form>
+
+{% endblock %}
+
+
+
+
+{% extends '../base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+
+{% crispy form %}
+<p>wala</p>
+<input type='submit' value="submit">
+{% endblock %}

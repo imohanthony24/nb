@@ -1,0 +1,87 @@
+{% extends 'base-templates/base.html' %}
+{% block title %}create account{% endblock %}
+{% block xtra_header_files %}
+<style type="text/css">
+  .form-error{
+    color:red;
+  }
+</style>
+{% endblock %}
+{% block content %}
+
+ <section id="reg-form">
+  <div class="container">
+   <div class="row">
+    <div class="col-xs-offset-1 col-xs-10 col-sm-6 col-md-offset-8 col-md-4">
+    <div class="form-wrapper">
+     <form action="" method="POST">
+     {% csrf_token %}
+
+      <div class="form-group">
+       <label for='username' class="col-form-label">Username</label>
+       {% for error in form.username.errors %}
+         <span class="form-error"><small>{{error}}</small></span>
+       {% endfor %}
+       <div class="">
+        <div class="input-group">
+         <input style="background-color: white !important;" type="text" class="form-control" placeholder="" name="username" required="true" value="{{form.username.value|default_if_none:''}}">
+         <div class="input-group-addon"><span class="glyphicon glyphicon-user"></span></div>
+        </div>
+       </div>
+      </div>
+
+      <div class="form-group">
+       <label for='email' class="control-form-label">E-mail</label>
+       {% for error in form.email.errors %}
+         <span class="form-error"><small>{{error}}</small></span>
+       {% endfor %}
+       <div class="">
+        <div class="input-group">
+         <input type="email" class="form-control" placeholder="" name="email" required="true" value="{{form.email.value|default_if_none:''}}">
+         <div class="input-group-addon">@</div>
+        </div>
+       </div>
+      </div>
+
+      <div class="form-group">
+       <label for='password1' class="control-form-label">Password</label>
+       {% for error in form.password1.errors %}
+         <span class="form-error"><small>{{error}}</small></span>
+       {% endfor %}
+       <div class="">
+        <div class="input-group">
+         <input type="password" class="form-control" placeholder="" name="password1" required="true">
+         <div class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></div>
+        </div>
+       </div>
+      </div>
+
+      <div class="form-group">
+       <label for='password2' class="control-form-label">Password Confirmation</label>
+       {% for error in form.password2.errors %}
+         <span class="form-error"><small>{{error}}</small></span>
+       {% endfor %}
+       <div class="">
+        <div class="input-group">
+         <input type="password" class="form-control" placeholder="" name="password2" required="true">
+         <div class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></div>
+        </div>
+       </div>
+      </div>
+
+      <div class="form-group">
+       <div class="">
+        <div class="input-group">
+         <button type="submit" class="btn btn-large btn-success" name="save" required="true" value="Sign up">&emsp;Sign up&emsp;</button>
+        </div>
+       </div>
+      </div>
+
+     </form>
+     </div><!-- form wrapper -->
+    </div>
+   </div>
+  </div>
+ </section>
+
+{% endblock %}

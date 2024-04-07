@@ -1,0 +1,552 @@
+{% load static %}
+<!DOCTYPE HTML>
+<!--
+	Justice by freehtml5.co
+	Twitter: http://twitter.com/fh5co
+	URL: http://freehtml5.co
+-->
+<html>
+	<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>NBL &mdash; Internet Banking Platform</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="NBL online banking" />
+	<meta name="keywords" content="NBL, online banking, shell banking, european bank, UK Bank, GB Bank, Banking in the UK, Online Bank" />
+	<meta name="author" content="FreeHTML5.co" />
+
+  	<!-- Facebook and Twitter integration -->
+	<meta property="og:title" content=""/>
+	<meta property="og:image" content=""/>
+	<meta property="og:url" content=""/>
+	<meta property="og:site_name" content=""/>
+	<meta property="og:description" content=""/>
+	<meta name="twitter:title" content="" />
+	<meta name="twitter:image" content="" />
+	<meta name="twitter:url" content="" />
+	<meta name="twitter:card" content="" />
+
+	<!-- <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400, 900" rel="stylesheet"> -->
+	
+	<!-- Animate.css -->
+	<link rel="stylesheet" href="{% static 'css/animate.css' %}">
+	<!-- Icomoon Icon Fonts-->
+	<link rel="stylesheet" href="{% static 'css/icomoon.css' %}">
+	<!-- Themify Icons-->
+	<link rel="stylesheet" href="{% static 'css/themify-icons.css' %}">
+	<!-- Bootstrap  -->
+	<link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+	<!-- Magnific Popup -->
+	<link rel="stylesheet" href="{% static 'css/magnific-popup.css' %}">
+	<!-- Owl Carousel  -->
+	<!-- <link rel="stylesheet" href="#"> 'css/owl.carousel.min.css -->
+	<!-- <link rel="stylesheet" href="{#% static 'css/owl.theme.default.min.css' %}"> -->
+	<!-- Flexslider -->
+	<!-- <link rel="stylesheet" href="{#% static 'css/flexslider.css' %}"> -->
+	<!-- Theme style  -->
+	<link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+	<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+
+	<!-- Modernizr JS -->
+	<script src="{% static 'js/modernizr-2.6.2.min.js' %}"></script>
+	<!-- FOR IE9 below -->
+	<!--[if lt IE 9]>
+	<script src="js/respond.min.js"></script>
+	<![endif]-->
+	<style type="text/css">
+	  #gtco-hero{
+	  	background-image: url("{% static 'images/img_bg_4.jpg' %}");
+	  }
+	  .remove-bm{
+	  	margin-bottom: 0px !important;
+	  }
+	  .row-pb-md{
+	  	padding-bottom: 1em !important;
+	  }
+	  .heading{
+	  	margin-bottom: 0 !important;
+	  }
+	  #gtco-practice-areas p{
+	  	margin-bottom: 10px;
+	  }
+	  .cash-icons a{
+	  	color: green;
+	  }
+	  .gtco-icon i{
+	  	color: blue;
+	  }
+	</style>
+
+	</head>
+	<body>
+		
+	<div class="gtco-loader"></div>
+	
+	<div id="page">
+	<nav class="gtco-nav" role="navigation">
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-2 col-xs-12">
+					<div id="gtco-logo"><a href="#" style="padding-left: 0!important;"><em>NEWBURYLAND FINANCIAL</em></a></div>
+				</div>
+				<div class="col-xs-10 text-right menu-1 main-nav">
+					<ul>
+						<li><a class="active" href="#" data-nav-section="home">Home</a></li><!--  -->
+						<li><a href="#" data-nav-section="about">About</a></li>
+						<li><a href="#" data-nav-section="practice-areas">Services</a></li>
+						<li><a href="#" data-nav-section="latest-news">Latest News</a></li>
+						<li><a href="#" data-nav-section="faq">FAQs</a></li>
+						<li><a href="#" data-nav-section="contact">Contact Us</a></li>
+						{% if request.user.is_authenticated %}
+						 <li><a id="dashboard" href="{% url 'core:transactions' %}">Dashboard</a></li>
+						 <li><a id="logout" href="{% url 'users:logout' %}">Logout</a></li>
+						{% else %}
+						<li><a target="_blank" id="login2" href="{% url 'users:login' %}">Login</a></li>
+						{% endif %}
+					</ul>
+					<!-- <ul>
+					 
+					</ul> -->
+				</div>
+			</div>
+			
+		</div>
+	</nav>
+
+	<section id="gtco-hero" class="gtco-cover" style='background-image: url({% static "images/bbnn_pyc6ng.jpg" %});'  data-section="home"  data-stellar-background-ratio="0.5">
+		<div class="overlay"></div>
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12 col-md-offset-0 text-center">
+					<div class="display-t">
+						<div class="display-tc">
+							<h1 class="animate-box" data-animate-effect="fadeIn">The Bank You Can Trust</h1>
+							<p><a href="{% url 'users:login' %}" class="btn btn-large btn-primary">Login</a></p>
+							<!-- <p class="gtco-video-link animate-box" data-animate-effect="fadeIn"><a href="https://vimeo.com/channels/staffpicks/93951774" class="popup-vimeo"><i class="icon-controller-play"></i></a></p> -->
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	
+	<section id="gtco-about" data-section="about">
+		<div class="container">
+			<div class="row row-pb-md">
+				<div class="col-md-12 heading animate-box" data-animate-effect="fadeIn"><!-- col-md-offset-2 -->
+					<h1>Welcome To NBLFinancial</h1>
+					<!-- <p class="sub">Dignissimos asperiores vitae velit veniam totam fuga molestias accusamus alias autem provident. Odit ab aliquam dolor eius.</p>
+					<p class="subtle-text animate-box" data-animate-effect="fadeIn">Welcome</p> -->
+					<p>
+                            Foremost financial institution with business outlays spanning Anglophone and Francophone all across Europe and the major countries of the United Kingdom. The Bank presently has an Asset Base of over £12.287trillion and employs over 10,000 professionals England, Scotland, Wales, Northern Ireland and some of the major countries in the United Nations. 
+</p>
+<p>
+Established in 1963, on a foundation of excellence, professionalism and best practices, the Bank’s consistent delivery of innovative financial solutions and exceptional customer experiences has enabled it to record year on year growth in clientele base and key financial indices since inception. The Bank's operation style, staff conduct and service delivery models are built on 8 core principles; Simplicity, Professionalism, Service, Friendliness, Excellence, Trustworthiness, Social Responsibility and Innovation. These Principles are known as The Blue Rules which reflects the Bank's vibrant Blue corporate colour. 
+</p>
+<p>
+At NBLFinancial we believe that of far greater importance to us, beyond providing first class service, is the role we play in developing our host communities. Hence, Social Responsibility forms a critical part of the NBLFinancial business model and a significant share of our annual profit is channelled to strategic high impact projects that improve Education, Community Development, the Art and Environment. 
+</p>
+<p>
+The Bank's achievements over the years has led to numerous accolades in recognition of excellent service delivery, innovation, corporate social responsibility and good corporate governance. In 2016, NBLFinancial received several national and international awards for product and service innovation and sound corporate governance practices, such as: The Best Banking Group by World Finance Magazine, The Most Innovative European Bank by The European Banker Magazine, and The Best Bank in the United Kingdom and Best Digital Bank in Europe by Euromoney Magazine. The Bank was also recognised as the 2016 Most Innovative Ai SRI 30 Company at the European Investor Awards and dominated the E-payment space by taking home six awards at the Electronic Payment Incentive Scheme (EPIS) awards organised by the Bank of England (BoE), Prudential Regulation Authority (PRA), a division of the BoE, Financial Conduct Authority (FCA) in conjunction with the United Kingdom Inter-bank Settlement System (UKIBSS) for the 2016 calendar year. 
+</p><p>
+At Newbury Land  Financial, our vision is to build an enduring Proudly European and Truly International Institution that plays a fundamental role as a Platform for Enriching Lives by building strong, value adding relationships with our customers, stakeholders and the communities in which we operate.
+                        </p>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-6 col-md-pull-1 animate-box" data-animate-effect="fadeInLeft">
+					<div class="img-shadow">
+						<img src="{% static 'images/img_1.jpg' %}" class="img-responsive" alt="">
+					</div>
+				</div>
+				<div class="col-md-6 animate-box" data-animate-effect="fadeInLeft">
+					<h2 class="heading-colored">Smart solutions for successful businesses</h2>
+					<p>A wide range of services tailored to support and grow small businesses around the world. All business needs finance and guidiance to thrive and grow and our experts are on hand to support businesses with the necessary tools</p>
+					<p>Open a business account with us and experience growth!<!-- <a href="#" class="read-more">Read more <i class="icon-chevron-right"></i></a> --></p>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section id="gtco-practice-areas" data-section="practice-areas">
+		<div class="container">
+			<div class="row row-pb-md">
+				<div class="col-md-8 col-md-offset-2 heading animate-box" data-animate-effect="fadeIn">
+					<h1>Core Service</h1>
+					<!-- <p class="subtle-text animate-box" data-animate-effect="fadeIn">Practice <span>Areas</span></p> -->
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-6">
+					<div class="gtco-practice-area-item animate-box">
+						<div class="gtco-icon">
+							<!-- <img src="{#% static 'images/scale.png' %}" alt=""> -->
+							<i class="fa fa-line-chart" aria-hidden="true"></i>
+						</div>
+						<div class="gtco-copy">
+							<h3>Business Loan</h3>
+							<p>Get quick loans for your business needs.</p>
+						</div>
+					</div>
+
+					<div class="gtco-practice-area-item animate-box">
+						<div class="gtco-icon">
+							<!-- <img src="{#% static 'images/scale.png' %}" alt=""> -->
+							<i class="fa fa-money" aria-hidden="true"></i>
+						</div>
+						<div class="gtco-copy">
+							<h3>Fund Transfer</h3>
+							<p>Transfer funds with ease using our highly secured system. </p>
+						</div>
+					</div>
+
+					<div class="gtco-practice-area-item animate-box">
+						<div class="gtco-icon">
+							<!-- <img src="{#% static 'images/scale.png' %}" alt=""> -->
+							<i class="fa fa-university" aria-hidden="true"></i>
+						</div>
+						<div class="gtco-copy">
+							<h3>Savings</h3>
+							<p>Our high interest yielding saving plans are tailored just for you. </p>
+						</div>
+					</div>
+
+				</div>
+				<div class="col-md-6">
+					
+					<div class="gtco-practice-area-item animate-box">
+						<div class="gtco-icon">
+							<!-- <img src="{#% static 'images/scale.png' %}" alt=""> -->
+							<i class="fa fa-credit-card" aria-hidden="true"></i>
+						</div>
+						<div class="gtco-copy">
+							<h3>Online Bill Payment</h3>
+							<p>Automate your bill payments with standing orders set in your accounts. </p>
+						</div>
+					</div>
+
+					<div class="gtco-practice-area-item animate-box">
+						<div class="gtco-icon">
+							<i class="fa fa-credit-card-alt" aria-hidden="true"></i>
+						</div>
+						<div class="gtco-copy">
+							<h3>Tokens</h3>
+							<p>Our secured easy to generate tokens make all transactions secure and easy to perform. </p>
+						</div>
+					</div>
+
+					<div class="gtco-practice-area-item animate-box">
+						<div class="gtco-icon">
+						 <i class="fa fa-shopping-cart" aria-hidden="true"></i>							
+						</div>
+						<div class="gtco-copy">
+							<h3>Lifestyle</h3>
+							<p>Live life to the fullest and be rest assured we have all your needs covered from the tip of your fingers! </p>
+						</div>
+					</div>
+
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section id="gtco-our-team" data-section="latest-news">
+		<div class="container">
+			<div class="row row-pb-md">
+				<div class="col-md-8 col-md-offset-2 heading animate-box" data-animate-effect="fadeIn">
+					<h1>Latest News</h1>
+					<!-- <p class="sub">D.</p>
+					<p class="subtle-text animate-box" data-animate-effect="fadeIn">Our Team</p> -->
+				</div>
+			</div>
+			<div class="row team-item gtco-team-reverse">
+				<div class="col-md-6 col-md-push-7 animate-box" data-animate-effect="fadeInRight">
+					<div class="img-shadow">
+						<img src="{% static 'images/cashless.jpg' %}" class="img-responsive" alt="">
+					</div>
+				</div>
+				<div class="col-md-6  col-md-pull-6 animate-box" data-animate-effect="fadeInRight">
+					<h2>Cashless Policy on Cash Withdrawals and Deposits</h2>
+					 <p>As part of its efforts to promote the cashless policy in the United Kingdom, the Financial Conduct Authority  has re-introduced charges on cash deposits over £500,000, which will be effective from today, Wednesday, September 18th 2017. This comes as necesity to drive upward growth of the economy and have more cash available for capital projects and lending.</p>
+				</div>
+			</div>
+
+			<div class="row team-item gtco-team">
+				<div class="col-md-6 col-md-pull-1 animate-box"  data-animate-effect="fadeInLeft">
+					<div class="img-shadow">
+						<img src="{% static 'images/nbl_halifax.jpg' %}" class="img-responsive" alt="">
+					</div>
+				</div>
+				<div class="col-md-6 animate-box" data-animate-effect="fadeInLeft">
+					<h2>Nblfinancial Partners Halifax to Develop SMEs</h2>
+					<p> In line with its long-term commitment to growing small and medium enterprises, foremost global financial institutions Newbury Land Financial plc, is partnering with the  Halifax Bank of UK  to disburse £25billion funding to entrepreneurs in UK’s SME sector.</p>
+				</div>
+			</div>
+
+		</div>
+	</section>
+
+	<!-- <section id="gtco-our-team" data-section="latest-news">
+		<div class="container">
+			<div class="row row-pb-md">
+				<div class="col-md-8 col-md-offset-2 heading animate-box" data-animate-effect="fadeIn">
+					<h1>Latest News</h1>
+				</div>
+			</div>
+			<div class="row">
+				
+			</div>
+		</div>
+	</section> -->
+
+<!-- FAQ Area Start -->
+<section id="gtco-faq" data-section="faq">
+  <div class="container">
+			<div class="row row-pb-md">
+				<div class="col-md-8 col-md-offset-2 heading animate-box" data-animate-effect="fadeIn">
+					<h1>Want to know more?</h1>
+					<p class="sub remove-bm">Our seasoned Customer relationship managers are online to attend to your every enquiries. Below are a few FAQs and there answers by our head CRM J. Finley.</p>
+				</div>
+			</div>
+			<div class="row team-item gtco-team-reverse">
+				<div class="col-md-6 col-md-push-7 animate-box" data-animate-effect="fadeInRight">
+					<div class="img-shadow">
+						<img src="{% static 'images/img_team_1.jpg' %}" class="img-responsive" alt="">
+					</div>
+				</div>
+				<div class="col-md-6  col-md-pull-6 animate-box" data-animate-effect="fadeInRight">
+
+					<div class="panel-group accordion" id="accordionId">                      
+                       <div class="panel panel-default">
+                        <div class="panel-heading" id="headingOne">
+                         <a data-toggle="collapse" data-target="#collapse1" aria-expanded="false" aria-controls="collapse1"><h4 class="panel-title">                  
+                         Are Newbury Land Financial of Newcastle (Newbury Land) accounts FCA insured?</h4></a>
+                        </div>
+                        <div id="collapse1" class="collapse" aria-labelledby="headingOne" data-parent="#accordionId">
+                        <div class="panel-body">
+                         <p>Yes. Newbury Land Newcastle is a member of the FCA, so our deposit accounts are insured up to the maximum amount allowed by law. If you want to learn more about FCA insurance limits, visit www.fca.org.uk
+                         </p>
+                        </div>
+                        </div>
+                        </div>
+                        <div class="panel panel-default">
+                         <div class="panel-heading" id="headingOne">
+                          <a data-toggle="collapse" data-target="#collapse2" aria-expanded="false" aria-controls="collapse2"><h4 class="panel-title">
+                            Are there fees for Newbury Land accounts?
+                          </h4></a>
+                          </div>
+                          <div id="collapse2" class="collapse" aria-labelledby="headingOne" data-parent="#accordionId">
+                           <div class="panel-body">
+                            <p>There are no monthly maintenance or annual fees charged for Newbury Land accounts. Certain circumstances, like early withdrawal of CDs or insufficient funds, may incur penalties or fees. For more information about fees, please see account Terms and Conditions.
+                            </p>
+                           </div>
+                          </div>
+                         </div>
+                         <div class="panel panel-default">
+                          <div class="panel-heading" id="headingOne">
+                           <a data-toggle="collapse" data-target="#collapse3" aria-expanded="false" aria-controls="collapse3"><h4 class="panel-title">What is an “external” account?
+                           </h4></a>
+                          </div>
+                          <div id="collapse3" class="collapse" aria-labelledby="headingOne" data-parent="#accordionId">
+                           <div class="panel-body">
+                            <p>                                     Your external account is a bank account you have with another U.K. financial institution. It’s linked to your Newbury Land account so that you can transfer money between the two. Any external account that is linked to your Newbury Land account must be in an account holder’s name. This includes payment processing companies such as: PayPal, Dwolla, Coinbase, Venmo, Square, and Payday loan deposits.
+                            </p>
+                           </div>
+                          </div>
+                         </div>
+                         <div class="panel panel-default">
+                          <div class="panel-heading" id="headingOne">
+                          <a data-toggle="collapse" data-target="#collapse4" aria-expanded="false" aria-controls="collapse4"><h4 class="panel-title">Tell me about “test deposits”.</h4></a>
+                          </div>
+                          <div id="collapse4" class="collapse" aria-labelledby="headingOne" data-parent="#accordionId">
+                          <div class="panel-body">
+                          <p>                                       For security reasons, we use test deposits as part of the external account verification process. 2 to 5 business days after you add a link to your Newbury Land account, we’ll make two test deposits of less than $1.00 into your external account. We do not use your money to make these test deposits.
+                          We’ll then ask you to log in to your Newbury Land account and report the amounts of those test deposits. After you have confirmed the test deposit amounts, you’ll be able to begin transferring money between your Newbury Land account and your external account. We use this method to verify each new external account. If you do not verify your external account within 99 days from when you opened your account, transfers will be restricted until you can verify your external bank account.
+                          </p>
+                          </div>
+                          </div>
+                        </div>
+                        <div class="panel panel-default">
+                         <div class="panel-heading" id="headingOne">
+                          <a data-toggle="collapse" data-target="#collapse6" aria-expanded="false" aria-controls="collapse6"><h4 class="panel-title">What is Newbury Land Online Bank swift code/BIC number?</h4></a>
+                         </div>                                      <div id="collapse6" class="collapse" aria-labelledby="headingOne" data-parent="#accordionId">
+                          <div class="panel-body">
+                          <p>                                        Our swift code/BIC number is NFANUB5S<br/>Please note: Barclays does not accept wire transfers at this time.
+                          </p>
+                          </div>
+                         </div>
+                        </div>
+                        <div class="panel panel-default">
+                         <div class="panel-heading" id="headingOne"> 
+                          <a data-toggle="collapse" data-target="#collapse7" aria-expanded="false" aria-controls="collapse7">                      <h4 class="panel-title"> How do I setup a direct deposit?</h4></a>
+                         </div>
+                         <div id="collapse7" class="collapse" aria-labelledby="headingOne" data-parent="#accordionId">
+                         <div class="panel-body">
+                         <p>To set up direct deposit, simply contact the external account from which you’d like to transfer funds into your Newbury Land account.  You’ll need to follow their procedures for setting up direct deposit but all of them will need the following information:<br/>                         Your Newbury Land Online Banking account number<br/>
+                         Our swift code/BIC number: NFANUB5S
+                         </p>
+                        </div>
+                        </div>
+                        </div>
+                        <div class="panel panel-default">
+                         <div class="panel-heading" id="headingOne">
+                          <a data-toggle="collapse" data-target="#collapse8" aria-expanded="false" aria-controls="collapse8"><h4 class="panel-title">
+                          How can I update my personal address or other information?</h4></a>
+                         </div>
+                         <div id="collapse8" class="collapse" aria-labelledby="headingOne" data-parent="#accordionId">
+                         <div class="panel-body">
+                         <p>
+                         There are two ways to update your personal information:                                 <ul style="margin-top: 0; padding-top: 1px;">
+                          <li>Log in to our Newbury Land website and sign in to your account to change your personal information</li>
+                          <li>Give our Customer Care team a call at +447-9272-0606. We’re here to help you, 7 days a week from 8:00 am to 8:00 pm GMT.</li>
+                         </ul>
+                         </p>
+                         </div>
+                         </div>
+                        </div>
+                        <div class="panel panel-default">
+                         <div class="panel-heading" id="headingOne">
+                           <a data-toggle="collapse" data-target="#collapse9" aria-expanded="false" aria-controls="collapse9">
+                           <h4 class="panel-title">If need to provide documentation for account or followup on paper work I have already  submitted, how can I contact Barclays?</h4></a>          
+                          </div>
+                          <div id="collapse9" class="collapse" aria-labelledby="headingOne" data-parent="#accordionId">
+                          <div class="panel-body">
+                          <p>You can send an email with copies of your documentation or follow up on your request via  care@nblfinancial.com or by mail to<br/
+                          
+                          Newbury Land Financial<br/>
+                          P.O. Box 348<br/>
+                          Newcastle, NE6 UD England<br/>
+                          
+                          </p>
+                          </div>
+                          </div>
+                          </div>
+
+
+                       </div>
+					
+				</div> <!-- end of the box -->
+			</div>
+    
+</section>
+
+	<section id="gtco-contact" data-section="contact">
+		<div class="container">
+			<div class="row row-pb-md">
+				<div class="col-md-8 col-md-offset-2 heading animate-box" data-animate-effect="fadeIn">
+					<h1>Contact Us</h1>
+					<p class="sub">Please do well to reach us for all enquiries and service. You can call our helpdesk between 08:00 GMT and 16:00 GMT Monday to Fridays. We respond to mails everyday including weekends.</p>
+					<p class="subtle-text animate-box" data-animate-effect="fadeIn">Contact</p>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-6 col-md-push-6 animate-box">
+					<form action="{% url 'core:email' %}" method="POST">
+					{% csrf_token %}
+						<div class="form-group">
+							<label for="name" class="sr-only">Name</label>
+							<input type="text" class="form-control" placeholder="Name" name="sender_name" required id="name">
+						</div>
+						<div class="form-group">
+							<label for="email" class="sr-only">Email</label>
+							<input type="text" class="form-control" placeholder="Email" id="email" name="from_email" required>
+						</div>
+						<div class="form-group">
+							<label for="message" class="sr-only">Message</label>
+							<textarea name="message" id="message" class="form-control" cols="30" rows="7" placeholder="Message" required></textarea>
+						</div>
+						<div class="form-group">
+							<input type="submit" value="Send Message" class="btn btn-primary">
+						</div>
+					</form>
+				</div>
+				<div class="col-md-4 col-md-pull-6 animate-box">
+					<div class="gtco-contact-info">
+						<ul>
+							<li class="address">P.O. Box 348 Newcastle, NE6 UD England</li>
+							<li class="phone"><a href="tel://+447-9272-0606">+447-9272-0606</a></li>
+							<li class="email"><a href="mailto:care@nblfinancial.com">care@nblfinancial.com</a></li>
+							
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	
+	<footer id="gtco-footer" role="contentinfo">
+		<div class="container">
+			<div class="row" id="paymentSupported">
+			 <div class="col-md-12">
+			  <p class="pull-left">
+			   <ul class="gtco-social-icons cash-icons pull-left">
+			  	 <li><a href="#" style="color: #77b5fe; font-size: xx-large; font-weight: bolder;"><i class="fa fa-cc-amex" aria-hidden="true"></i></a></li>
+			  	 <li><a href="#" style="color: #77b5fe; font-size: xx-large; font-weight: bolder;"> <i class="fa fa-cc-mastercard" aria-hidden="true"></i></a></li>
+			  	<li><a href="#" style="color: #77b5fe; font-size: xx-large; font-weight: bolder; "><i class="fa fa-cc-paypal" aria-hidden="true"></i></a></li>
+			  	<li><a href="#" style="color: #77b5fe; font-size: xx-large; font-weight: bolder; "><i class="fa fa-cc-visa" aria-hidden="true"></i></a></li>
+			  	<li><a href="#" style="color: #77b5fe; font-size: xx-large; font-weight: bolder; "><i class="fa fa-cc-jcb" aria-hidden="true"></i></a></li>
+			  	<li><a href="#" style="color: #77b5fe; font-size: xx-large; font-weight: bolder; "><i class="fa fa-cc-discover" aria-hidden="true"></i></a></li>
+			  	</ul>
+			  				  	
+			  </p>
+			  <p class="pull-right">
+			   <small>
+			   All major payment are supported!</small>
+			  </p>
+			 </div>
+			</div>
+			<div class="row copyright">
+				<div class="col-md-12">
+					<p class="pull-left">
+						<small class="block">&copy; 2023 NEWBURYLAND FINANCIAL. All Rights Reserved.</small> 
+					</p>
+					<p class="pull-right">
+						<ul class="gtco-social-icons pull-right">
+							<li><a href="#"><i class="icon-twitter"></i></a></li>
+							<li><a href="#"><i class="icon-facebook"></i></a></li>
+							<li><a href="#"><i class="icon-linkedin"></i></a></li>
+							<li><a href="#"><i class="icon-dribbble"></i></a></li>
+						</ul>
+					</p>
+				</div>
+			</div>
+
+		</div>
+	</footer>
+	</div>
+
+	<div class="gototop js-top">
+		<a href="#" class="js-gotop"><i class="icon-arrow-up"></i></a>
+	</div>
+	
+	<!-- jQuery -->
+	<script src="{% static 'js/jquery.min.js' %}"></script>
+	<!-- jQuery Easing -->
+	<script src="{% static 'js/jquery.easing.1.3.js' %}"></script>
+	<!-- Bootstrap -->
+	<script src="{% static 'js/bootstrap.min.js' %}"></script>
+	<!-- Waypoints -->
+	<script src="{% static 'js/jquery.waypoints.min.js' %}"></script>
+	<!-- Stellar -->
+	<script src="{% static 'js/jquery.stellar.min.js' %}"></script>
+	<!-- Magnific Popup -->
+	<script src="{% static 'js/jquery.magnific-popup.min.js' %}"></script>
+	<script src="{% static 'js/magnific-popup-options.js' %}"></script>
+	<!-- Main -->
+	<script src="{% static 'js/main.js' %}"></script>
+	<script type="text/javascript">
+		$('#login2').on('click',function(evt){
+			window.open($(this).attr('href'),'_self')
+		})
+		$('#dashboard').on('click',function(evt){
+			window.open($(this).attr('href'),'_self')
+		})
+		$('#logout').on('click',function(evt){
+			window.open($(this).attr('href'),'_self')
+		})
+	</script>
+
+	</body>
+</html>
+

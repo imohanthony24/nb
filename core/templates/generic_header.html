@@ -1,0 +1,433 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>NBL - {% block title %}{% endblock %}</title>
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <script
+  src="https://code.jquery.com/jquery-3.2.1.min.js"
+  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+  crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+  <link href="https://fonts.googleapis.com/css?family=ABeeZee" rel="stylesheet">
+  <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+  <link rel="stylesheet" href="{% static 'css/icomoon.css' %}">
+
+   
+
+
+  <style type="text/css">
+    html{
+  font-size: 13px;
+}
+body{
+  padding-top: 50px;
+}
+#menu-options>li:last-child{
+  margin-bottom: 78px;
+}
+
+#side-menu{
+  background-color: rgba(231,231,231,.4);/*#e7e7e7;*/
+  border-right: 2px solid #e7e7e7;
+  padding-top: 12px;
+  height: 100%;
+  position: fixed;
+  overflow: auto;
+  padding-right: 0 !important;
+  padding-left: 3px !important; 
+  /*padding-bottom: 10px;*/
+}
+#side-menu .profile-block > *{
+  display: inline-block;
+}
+#side-menu .profile-block img{
+  width: 70px;
+}
+#side-menu .profile-title small{
+  display: block;
+}
+#side-menu ul.nav{
+  margin-top: 1rem;
+}
+#side-menu ul.nav a{
+  color: rgba(0,0,0,1);/*#8b91a0;*/
+  font-size: .99rem;
+  font-weight: bold;
+}
+#side-menu ul.nav a:hover,
+#side-menu ul.nav a:focus{
+  color: #FFF;
+  background-color: inherit;
+  background-color: rgba(119,139,165,.70);
+}
+#side-menu ul.nav a .glyphicon{
+  margin-right: 0.7rem;
+}
+#side-menu ul.nav a .badge{
+  background-color: #1ca095;
+}
+#side-menu ul.nav .nav-divider{
+  background-color: #252830;
+}
+#side-menu ul.nav ul{
+  margin-left: 8%;
+  margin-right: 10%;
+}
+
+ul.sub-list li{
+  /*still improve on this.*/
+  margin-left: 5%;
+  margin-right: -12%;
+}
+#side-menu ul.nav ul li{
+  margin-top: 3px
+  margin-bottom: 3px;
+}
+
+#side-menu ul.nav ul a{
+  font-weight: normal;
+  display: block;
+  background-color: transparent; red;rgba(254,254,250,.6);
+  padding: 0.4rem;
+  margin-bottom: 0.3rem;
+  border-radius: 0.25rem;
+  text-decoration: none;
+  box-shadow: 2px 0px 1px 0px rgba(255,255,255,.3),
+        -2px 1px 1px 0px rgba(255,255,255,.3); 
+}
+
+#side-menu ul.nav ul a:hover{
+  text-decoration: none;
+  background-color: rgba(119,139,165,.5); /*#778BA5;/* #434857;*/
+}
+#side-menu ul.nav ul a:focus{
+  text-decoration: none;
+  color:#563d7c;
+  background-color: white;
+  border-bottom: 1px solid #563d7c;
+  border-right: 1px solid #563d7c;
+}
+
+#side-menu ul.nav a .glyphicon.pull-right{
+  margin-top: 0.2rem;
+  will-change: transform;
+}
+#side-menu ul.nav a:focus .glyphicon.pull-right{
+  -moz-transform: rotate(-90deg);
+  -webkit-transform: rotate(-90deg);
+  -o-transform: rotate(-90deg);
+  -ms-transform: rotate(-90deg);
+  transform: rotate(-90deg);
+}
+.form-wrapper{
+    padding-top: 7%;
+    padding-bottom: 7%;
+  }
+#main-business > li > a {
+  background-color: #652DC1;#4F86F7;blue;
+  border-radius: 4px;
+  color: #FFF;
+}
+
+table.table a{
+  text-decoration: none;
+}
+.form-error{
+  display: block;
+  margin-bottom: 1px;
+}
+/* rgba(119,139,165,.3) #778BA5 #434857 rgba(119,139,165,.4);/* #778BA5;/*#0066FF;/*rgba(51,122,183,1);/* #A6A6A6;/* #BFAFB2;  /* #0D10E9 #1b1e24;*/
+
+@media (max-width: 544px){
+  html{
+    font-size: 12px;
+  }
+  body{
+    /*padding-top: 105px;*/
+  }
+  a.navbar-brand{
+    font-size: 16px !important;
+  }
+}
+@media (min-width: 481) and (max-width: 768){
+  body{
+    /*padding-top: 200px;*/
+  }
+
+}
+  </style>
+  
+  <style type="text/css">
+    /*html{
+  font-size: 18px;
+}
+body{
+  padding-top: 3.6em;
+}*/
+#test{
+  font-size: 1.8rem;
+  /*font-size: 2.4vw;*/
+}
+.btn-fill{
+  padding: 0;
+}
+.block-button{
+  border-radius: 0;
+}
+.btn-text-left{
+  text-align: left;
+}
+div.panel-group li{
+  overflow: hidden;
+  /*the overflow over shdown the whole */
+}
+.subunit-panel{
+  margin-bottom: 0;
+}
+.main-header{
+  /*color: black !important;*//*#fff*/
+  font-weight: bolder !important;
+  font-size: 1.05rem !important;
+  /*background-color: #f8f8f8;*/
+  /*background-color: rgba(231,231,231,.4);*/
+}
+.sub-header{
+  /*color: #563d7c !important;*/
+  font-weight: bolder !important;
+  font-size: .95rem !important;
+  /*background-color: #f8f8f8 !important;*/
+  /*background-color: rgba(165, 165, 21, 0.6) !important;*/
+  overflow: auto;
+}
+.remove-bottom-margin{
+  margin-bottom: 0;
+}
+div.panel-heading > h4{
+  color: red !important; /*not working yet; do fonts here*/
+}
+.dropdown-toggle:hover{
+  border-color:#761c19
+}
+.dropdown-toggle:focus{
+  border-color:#1b6d85;
+  color:#563d7c;
+  background-color: white !important;
+}
+.subnav-effects{
+  border-bottom: 1px solid gold !important;rgba(255,255,255,.75);
+}
+#myNavbar > ul > li{
+  margin-bottom: 1px;
+}
+
+li.nav-li{
+  /*display: hidden;*/
+}
+.sub-li>li{
+  display: block;
+}
+.sub-li>li>a{
+  line-height: 20px;
+  padding: 5px 15px 5px 25px;
+}
+.sub-li > li{
+  display: block;
+  clear: both;
+  white-space: nowrap;
+}
+.nav-color-effect{
+  /*gives the nav menu same bkg&fore color as the nav
+    that way it is not noticed at load time when jquery hides it
+    from user view
+  */
+  /*background-color: #214FC6 !important;*/ /*;#391285 #FFFF38*/
+    /*color: #214FC6 !important;*//* #391285 #FFFF38*/
+}
+#myNavbar ul.nav a{
+  /*background-color: rgba(254,254,250,.6) !important;*/
+}
+#myNavbar > ul.nav > a:hover{
+  color: #FFF !important;
+  /*background-color: inherit;
+  background-color: rgba(119,139,165,.30) !important;*/
+}
+
+#myNavbar ul.nav a:focus{
+  color: #FFF !important;
+  font-weight: bolder !important;
+  /*background-color: inherit;*/
+  /*background-color: rgba(119,139,165,.70) !important;*/
+}
+
+#myNavbar ul.nav li ul a{
+  margin-bottom: 1px;
+  color: #f8f8f8;
+  font-size: 12px;
+}
+#myNavbar ul.nav li ul a:hover{
+  /*font-size: 1rem;*/
+  /*background-color: red !important;*/
+  color: #FFF;
+}
+.white-bkg{
+  background-color: #FFF;
+}
+#myNavbar li.nav-li>a{
+  cursor: pointer !important;
+}
+
+.xtra-navs{
+  color: #FFF;
+}
+
+.navbar-default{
+  background-color: #2F92CA;
+}
+.navbar-default .navbar-nav > li > a{
+  color: #FFF;
+}
+.navbar-default .navbar-nav > .active > a{
+  /*background-color: transparent;*/
+  color: #FFF;
+  padding-bottom: 5px;
+  border-bottom: 4px solid #FFF;
+}
+
+
+.navbar-default .navbar-nav > li > a,
+.navbar-default .navbar-nav > li > a:hover {
+  color: #FFF;
+  -webkit-transition: all 150ms ease-in-out;
+  -moz-transition: all 150ms ease-in-out;
+  -ms-transition: all 150ms ease-in-out;
+  -o-transition: all 150ms ease-in-out;
+  transition: all 150ms ease-in-out;
+}
+.navbar-default .navbar-nav > .active > a:hover,
+.navbar-default .navbar-nav > li > a:hover{
+  /*background-color: red;transparent;*/
+  color: #F3F3F3;
+  padding-bottom: 5px;
+  border-bottom: 4px solid #F3F3F3;
+}
+.navbar-header .navbar-toggle,
+.navbar-default .navbar-toggle:focus{
+  background-color: #214FC6 !important;
+}
+.navbar-default .navbar-toggle:hover{
+  background-color: #214FC6 !important;
+}
+.no-hover-effect{
+  border-bottom: none;
+
+}
+.navbar-default .navbar-nav>.open>a:focus{
+  color: yellow;
+}
+@media (max-width: 480px){
+  html{
+    /*font-size: 16px;*/
+  }
+}
+.gtco-social-icons {
+  margin: 0;
+  padding: 0;
+}
+.gtco-social-icons li {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: -moz-inline-stack;
+  display: inline-block;
+  zoom: 1;
+  *display: inline;
+}
+.gtco-social-icons li a {
+  display: -moz-inline-stack;
+  display: inline-block;
+  zoom: 1;
+  *display: inline;
+  color: #7ED321;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+.gtco-social-icons li a i {
+  font-size: 20px;
+}
+  </style>
+
+  <style type="text/css">
+        .clock-xtr *{
+          margin: 0;
+          padding: 0;
+          background-color: red;
+        }
+        
+        #clock {
+          position: relative;
+          width: 600px;
+          height: 600px;
+          margin: 20px auto 0 auto;
+          background: url(images/clockface.jpg);
+          list-style: none;
+          }
+        
+        #sec, #min, #hour {
+          position: absolute;
+          width: 30px;
+          height: 600px;
+          top: 0px;
+          left: 285px;
+          }
+        
+        #sec {
+          background: url(images/sechand.png);
+          z-index: 3;
+            }
+           
+        #min {
+          background: url(images/minhand.png);
+          z-index: 2;
+            }
+           
+        #hour {
+          background: url(images/hourhand.png);
+          z-index: 1;
+            }
+            
+        p {
+            text-align: center; 
+            padding: 10px 0 0 0;
+            }
+    </style>
+<style type="text/css">
+  #transform > p{
+    text-align: left;
+  }
+</style>
+  <link href="https://fonts.googleapis.com/css?family=Courgette|Open+Sans" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=PT+Mono" rel="stylesheet">
+
+  
+  
+
+</head>
+<body>
+    {% block content %}
+    {% endblock %}
+    <script type="text/javascript">
+      $(document).ready(function(){
+        //$('li.nav-li').children('a').css('cursor','pointer')
+       
+        {% block domready %}
+        {% endblock %}
+      })
+    </script>
+</body>
+</html>

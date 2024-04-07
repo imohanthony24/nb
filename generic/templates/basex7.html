@@ -1,0 +1,249 @@
+{% load static %}
+<!DOCTYPE HTML>
+<html lang="zxx">
+<head>
+<title>NBL | Simplicity & Service</title>
+<!-- Meta tag Keywords -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="NBL, online banking, shell banking, european bank, UK Bank, GB Bank, Banking in the UK, Online Bank" />
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
+function hideURLbar(){ window.scrollTo(0,1); } </script>
+<!--// Meta tag Keywords -->
+<!-- css files -->
+<!-- <link href="{% static 'ii/css/bootstrap.css' %}" rel="stylesheet" type="text/css" media="all" /> -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha512-Dop/vW3iOtayerlYAqCgkVr2aTr2ErwwTYOvRFUpzl2VhCMJyjQF0Q9TjUXIo6JhuM/3i0vVEt2e/7QQmnHQqw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<!-- Bootstrap-Core-CSS -->
+<link href="{% static 'ii/css/style.css' %}" rel="stylesheet" type="text/css" media="all" /> <!-- Style-CSS --> 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha512-SfTiTlX6kk+qitfevl/7LibUOeJWlt9rbyDn92a1DqWOw9vWG2MFoays0sgObmWazO5BQPiFucnnEAjpAB+/Sw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<link rel="stylesheet" href="{% static 'ii/css/flexslider.css' %}" type="text/css" media="all" /> <!-- Banner-Slider-CSS -->
+<!-- //css files -->
+<link rel="stylesheet" type="text/css" href="{% static 'ii/css/demo.css' %}"/>
+<!-- online-fonts -->
+<link href="//fonts.googleapis.com/css?family=Dosis:200,300,400,500,600,700,800&amp;subset=latin-ext" rel="stylesheet">
+<link href="//fonts.googleapis.com/css?family=Ubuntu+Condensed&amp;subset=cyrillic,cyrillic-ext,greek,greek-ext,latin-ext" rel="stylesheet">
+{% block extraheader %} {% endblock %}
+<!-- //online-fonts -->
+</head>
+<body>
+
+<!-- navigation -->
+<div class="nav-links">	
+		<div class="header-w3l">
+			<div class="container">
+				<a class="navbar-brand" href="{% url 'homepage' %}"><h1><span>NEWBURYLAND</span> FINANCIAL</h1></a>
+				<!-- <div class="call-w3l">
+					<img src="{% static 'ii/images/call.png'  %}">
+				</div> -->
+				<div class="clearfix"></div>
+			</div>
+		</div>
+		<nav class="navbar navbar-inverse">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>                        
+				</button>
+			</div>
+		<div class="collapse navbar-collapse" id="myNavbar">
+			<div class="w3l-nav">
+				<ul class="nav navbar-nav link-effect">
+					<li id="homex" class="active"><a href="{% url 'homepage' %}">Home</a></li>
+					<li id="about"><a href="{% url 'about' %}" class="">About Us</a></li>
+					<li id="services"><a href="{% url 'services' %}" class="">Services</a></li>
+					<!-- <li><a href="#team" class="scroll">Team</a></li> -->
+					<li id="contact"><a href="{% url 'contact' %}" class="">Contact Us</a></li>
+					{% if request.user.is_authenticated %}
+					<li><a id="dashboard" href="{% url 'core:transactions' %}">Dashboard</a></li>
+					<li><a id="logout" href="{% url 'users:logout' %}">Logout</a></li>
+					{% else %}
+					<li><a id="login2" href="{% url 'users:login' %}">Login</a></li>
+					{% endif %}
+				</ul>
+			</div>
+		</div>
+	</nav>
+	<!-- <div class="codecon_half">
+				<div class="expSearchBox">
+					<div class="expSearchFrom">
+						<input id="field" type="search" placeholder="Search here"/>
+						<div class="close">
+							<span class="front"></span>
+							<span class="back"></span>
+						</div>
+					</div>
+				</div>
+	</div> -->
+
+			<div class="clearfix"></div>
+			{% if messages %}
+			<div class="container">
+			<div class="row">
+				<div class="col-sm-12" style="padding-right: 20px !important; margin-right: 15px !important;">
+			
+				{% for message in messages %}
+			   <div class="alert alert-{{message.tags}}" role="alert">
+				   <p>{{message}}</p>
+ <button type="button" class="close"  data-dismiss="alert" aria-label="Close" >
+   <span style="font-weight: bolder;">X</span>
+ </button>
+				   
+			   </div>
+			   {% endfor %}
+		   </div>
+		   </div>
+		</div>
+			   {% endif %}
+</div>
+<!-- //navigation -->
+<!-- banner section -->
+<div class="banner-slider">
+				<div class="container">
+            {% block keyslider %}
+				<div class="callbacks_container">
+					<ul class="rslides" id="slider3">
+						<li>
+							<div class="w3l_banner_info">
+								<h3>Entrepreneurial thinking.</h3>
+								<p class="agileits_w3layouts_more menu__item">We are a growth driven bank. Our range of services is designed to support your business.</p>
+								
+							</div>
+						</li>
+						<li>
+							<div class="w3l_banner_info">
+								<h3>Financing Redefined!</h3>
+								<p class="agileits_w3layouts_more menu__item">Talk to us about your financial needs and we have you fully covered.</p>					
+								
+							</div>
+						</li>
+						<li>
+							<div class="w3l_banner_info">
+								<h3>Asset Management</h3>
+								<p class="agileits_w3layouts_more menu__item">Multi-asset specialists delivering flexible and effective long term Asset Management solutions for private clients, institutional investors and intermediaries</p>						
+								
+							</div>
+						</li>
+						<li>
+							<div class="w3l_banner_info">
+								<h3>Don't hesitate to accept credit cards today!</h3>
+								<p class="agileits_w3layouts_more menu__item">Our payment system is top notch. Support is available at all times.</p>
+								
+							</div>
+						</li>
+					</ul>
+				</div>
+			{% endblock %}
+				</div>
+</div> 
+
+{% block content %} {% endblock %}
+
+<!-- footer -->
+<div class="footer-bot">
+	<div class="container">
+		<div class="logo2">
+			<h2><a href="{% url 'homepage' %}"><span>Newburyland </span>Financial</a></h2>
+		</div>
+		<div class="clearfix"></div>
+	</div>
+</div>
+<div class="copy-right">
+	<div class="agileinfo_social_icons">
+		<ul class="agileits_social_list">
+			<li><a href="#" class="w3_agile_facebook"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+			<li><a href="#" class="agile_twitter"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+			<li><a href="#" class="w3_agile_dribble"><i class="fa fa-dribbble" aria-hidden="true"></i></a></li>
+			<li><a href="#" class="w3_agile_google"><i class="fa fa-google-plus" aria-hidden="true"></i></a></li>
+		</ul>
+	</div>
+	<div class="container">
+		<p> &copy; 2023 Newburyland Financial. All Rights Reserved</a></p>
+	</div>
+</div>
+<!-- //footer -->
+
+<!-- js files -->
+<!-- js -->
+<script type="text/javascript" src="{% static 'ii/js/jquery-2.1.4.min.js' %}"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha512-oBTprMeNEKCnqfuqKd6sbvFzmFQtlXS3e0C/RGFV0hD6QzhHV+ODfaQbAlmY6/q0ubbwlAM/nCJjkrgA3waLzg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+<!-- <script type="text/javascript" src="{% static 'ii/js/bootstrap.js' %}"></script> -->
+ <!-- Necessary-JavaScript-File-For-Bootstrap --> 
+<!-- //js -->
+<!-- js for banner -->
+<!-- responsiveslider -->
+	<script src="{% static 'ii/js/responsiveslides.min.js' %}"></script>
+		<script>
+			// You can also use "$(window).load(function() {"
+			$(function () {
+			  // Slideshow 4
+			  $("#slider3").responsiveSlides({
+				auto: true,
+				pager:true,
+				nav:false,
+				speed: 500,
+				namespace: "callbacks",
+				before: function () {
+				  $('.events').append("<li>before event fired.</li>");
+				},
+				after: function () {
+				  $('.events').append("<li>after event fired.</li>");
+				}
+			  });
+		
+			});
+		 </script>
+	<!-- //responsiveslider -->
+	<!-- stats -->
+<script type="text/javascript" src="j{% static 'ii/s/numscroller-1.0.js' %}"></script>
+<!-- //stats -->
+<!-- /js for banner -->
+<!-- start-smoth-scrolling -->
+<script type="text/javascript" src="{% static 'ii/js/move-top.js' %}"></script>
+<script type="text/javascript" src="{% static 'ii/js/easing.js' %}"></script>
+<script type="text/javascript">
+	jQuery(document).ready(function($) {
+		$(".scroll").click(function(event){		
+			event.preventDefault();
+			$('html,body').animate({scrollTop:$(this.hash).offset().top},1000);
+		});
+	});
+</script>
+<!-- start-smoth-scrolling -->
+<!-- smooth scrolling -->
+<script src="{% static 'ii/js/SmoothScroll.min.js' %}"></script>
+<!-- //smooth scrolling -->
+<!-- smooth-scrolling-of-move-up -->
+<script type="text/javascript">
+	$(document).ready(function() {
+		/*
+		var defaults = {
+			containerID: 'toTop', // fading element id
+			containerHoverID: 'toTopHover', // fading element hover id
+			scrollSpeed: 1200,
+			easingType: 'linear' 
+		};
+		*/
+		
+		$().UItoTop({ easingType: 'easeOutQuart' });
+		
+	});
+</script>
+<!-- //smooth-scrolling-of-move-up -->  
+<!-- video-js -->
+<script src="{% static 'ii/js/jquery.vide.min.js' %}"></script>
+<!-- //video-js -->
+<!--gallery-js -->
+<script src="{% static 'ii/js/jquery.picEyes.js' %}"></script>
+<script>
+	$(function(){
+		//picturesEyes($('.demo li'));
+		$('.demo li').picEyes();
+	});
+</script>
+<!--//gallery-js -->
+<!-- //js files -->
+
+</body>
+</html>

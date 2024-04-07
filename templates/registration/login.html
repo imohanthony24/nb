@@ -1,0 +1,94 @@
+{% extends 'registration/base_core.html' %}
+{% load static %}
+
+{% block contentx %}
+<div style="display: flex;
+justify-content: center;
+align-items: center;
+height: auto;
+padding-top: 15%;
+">
+<div class="login-box" >
+    <div class="login-logo" >
+      <a href="{% url 'core:homepage' %}" style="color:white !important; font-size: 2.5rem;"><b>NBL FINANCIAL</b></a>
+    </div>
+    <!-- /.login-logo -->
+    <div class="card">
+      <div class="card-body login-card-body">
+        <p class="login-box-msg"><i class='fas fa-lock' style='font-size:24px'></i> Secure Login </p>
+  
+        <form action="." method="post">
+            {% csrf_token %} 
+            {% for k,y in form.errors.items %} 
+                        <small style="color: red;">{{y}}</small>
+                    {% endfor %}
+            {% for field in form.visible_fields %}
+                    <div class="form-group mb-3">
+                        <label for="{{field.id_for_label}}">{{field.label}}</label>
+                        
+                          {{ field }}
+                          {% if field.help_text %}
+                            <small class="form-text text-muted">{{ field.help_text }}</small>
+                          {% endif %}
+                        
+                    </div>
+            {% endfor %}
+         
+          {% if redirect_field_value %}
+            <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+          {% endif %} 
+          {% for hidden_field in form.hidden_fields %}
+            {{ hidden_field }}
+          {% endfor %}
+          <div class="row">
+            <!-- /.col -->
+            <div class="col-sm-6 col-xs-12">
+              <button type="submit" class="btn btn-primary btn-block">Sign In</button>
+            </div>
+            <div class="col-sm-6 col-xs-12">
+                <a href="{% url 'core:homepage' %}" class="btn btn-block">&emsp;Back&emsp;</a>
+              <!-- <div class="icheck-primary">
+                <input type="checkbox" id="remember">
+                <label for="remember">
+                  Remember Me
+                </label>
+              </div> -->
+            </div>
+            <!-- /.col -->
+          </div>
+        </form>
+  
+        <!-- <div class="social-auth-links text-center mb-3">
+          <p>- OR -</p>
+          <a href="#" class="btn btn-block btn-primary">
+            <i class="fab fa-facebook mr-2"></i> Sign in using Facebook
+          </a>
+          <a href="#" class="btn btn-block btn-danger">
+            <i class="fab fa-google-plus mr-2"></i> Sign in using Google+
+          </a>
+        </div> -->
+        <!-- /.social-auth-links -->
+  
+        <p class="mb-1">
+          <!-- <a href="#">I forgot my password</a> -->
+        </p>
+        <p class="mb-0">
+         
+          
+        </p>
+      </div>
+      <!-- /.login-card-body -->
+    </div>
+  </div> 
+</div>
+{% endblock %} 
+
+{% block  domready %}
+<script>
+  $(document).ready(function(){
+    $('body').addClass('login-page')
+    var inp = $('input[type="text"], input[type="password"]')
+    inp.addClass('form-control')
+  })
+</script>
+{% endblock %}

@@ -1,0 +1,129 @@
+{% extends 'generic_header.html' %}
+{% load static %}
+
+{% block title %}{{super}}Dashboard{% endblock %}
+{% block content %}
+
+<nav class="navbar navbar-default navbar-fixed-top" style="background-color:#214FC6 !important;">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button id="drp-btn" type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span> 
+      </button>
+      <a class="navbar-brand hidden-xs" href="{% url 'core:homepage' %}" style="color:#FFFF38; font-family: 'PT Mono', monospace;">NBL Internet Banking</a><!-- omnia_circa:index -->
+      <a class="navbar-brand" style="color: #FFF;"></a>
+    </div>
+    <ul id="large-screen-nav" class="nav navbar-nav navbar-right hidden-xs">
+    <li class="hidden-xs hidden-sm"><a style="border-bottom: none;">24/7 support:&nbsp;<span class="glyphicon glyphicon-phone"></span> +447-4512-83775</a></li>
+    <li class="hidden-xs">{% if request.user.is_authenticated %}<a style="border-bottom: none;" href="{% url 'users:logout' %}">Sign out</a>{% else %}<a href="{% url 'users:login' %}">Sign in</a>{% endif %}</li>
+    </ul>
+    <div class="collapse navbar-collapse" id="myNavbar">
+    
+      <ul class="nav navbar-nav navbar-right hidden-sm hidden-md hidden-lg" id="dropdown-nav">
+        <!-- small screen menu -->
+
+
+        
+        
+        <li class="dropdown nav-li"><a class="dropdown-toggle main-header nav-color-effect" data-toggle="dropdown"><i class=""></i>My Account&nbsp;<b class="glyphicon glyphicon-menu-down pull-right"></b></a>
+          <ul class="dropdown-menu">
+           <li>
+            <a class="btn sub-header btn-fill btn-text-left block-button subnav-effects nav-color-effect" href="{% url 'core:transactions' %}">Transaction Details</a>
+           </li>
+           
+           <li><a class="btn sub-header btn-fill btn-text-left block-button subnav-effects nav-color-effect" href="#" >Balance Enquiry</a></li>
+           <li><a class="btn sub-header btn-fill btn-text-left block-button subnav-effects nav-color-effect" href="#" >Account Statement</a></li>
+           <li><a class="btn sub-header btn-fill btn-text-left block-button subnav-effects nav-color-effect" href="#" >My Account Manager</a></li>
+           <li><a class="btn sub-header btn-fill btn-text-left block-button subnav-effects nav-color-effect" href="#" >Secure E-mail</a></li>
+          </ul>
+        </li>
+        <!-- <li><a href="#">Page 1</a></li> -->
+        <li><a class="main-header" href="#">Account Transfers</a></li>
+        <li><a class="main-header" href="#"><li><a class="main-header" href="#">Payments &amp; Collections</a></li></a></li>
+        <li><a class="main-header" href="#">Cards</a></li>
+        <li><a class="main-header" href="#">Fx Transactions</a></li>
+        <li><a class="main-header" href="#">Airlines &amp; Travels</a></li>
+        <li><a class="main-header" href="#">Cheques</a></li>
+        <li><a class="main-header" href="#">Customer Feedback</a></li>
+
+        
+
+
+        <li class="dropdown nav-li"><a class="main-header nav-color-effect">24/7 support:&nbsp;<span class="glyphicon glyphicon-phone"></span> +447-4512-83775</a></li>
+        <li class="dropdown nav-li">{% if request.user.is_authenticated %}<a class="main-header nav-color-effect" style="border-bottom: none;" href="#" >Sign in</a>{% endif %}</li> 
+          
+        <!--end of small screen menu -->
+        
+      </ul>
+    </div>
+    
+  </div>
+  </nav>
+
+   <div id="top-level-advert" class="container-fluid">
+   <div class="row">
+    <div class="col-xs-12 col-md-offset-3 col-md-6 col-sm-offset-3 col-sm-6">
+    
+
+     <section style="margin-top: 2rem;border-radius: 10px; padding: 10px 5px;">
+	  <div class="panel panel-default">
+  	  <div class="panel-heading">
+       <h2 class="panel-title" style="text-align: center;">Security Alert</h2>
+      </div>
+      <div class="panel-body">
+        <p class="text-danger text-center">Security of all transfers is our outmost priority.</p>
+        <p>To ensure the security and integrity of a transfer, a series of security checks is strictly followed during the transfer process.<br> Send an email to the customer service if you get stuck in any step or have any question. <em><i><a href="{% url 'core:create_transfer' %}" >proceed with transfer</a></i></em></p><!-- data-toggle="modal" data-target="#myModal" -->
+      </div>
+      <div class="panel-footer">
+        <h4 class="text-center"><a href="{% url 'core:transactions' %}">Home</a></h4><!-- NBL Internet Bank -->
+      </div>
+      </div>     	
+     </section>
+
+     <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Fund Transfer</h4>
+      </div>
+      <div class="modal-body">
+        
+
+        <form class="form-inline" method="post" id="tokenForm" action="">
+  <div class="form-group">
+    <label for="pwd">Transfer Token:</label>
+    <input type="password" class="form-control" id="pwd">
+  </div>
+  {% csrf_token %}
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+   </div>
+  </div>
+
+  <script type="text/javascript">
+  	$('#tokenForm').on("submit",function(evt){
+  		
+  		evt.preventDefault();
+  		if($('#pwd').val().length>1){
+  			alert('incorrect token')
+  		}
+  	});
+  </script>
+
+ {% endblock %}
